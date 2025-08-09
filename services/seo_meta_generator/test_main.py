@@ -1,7 +1,7 @@
 """Unit tests for the SEO Meta Description Generator service."""
 
 from fastapi.testclient import TestClient
-from .main import app, truncate_description, generate_meta_with_openai
+from services.seo_meta_generator.main import app, truncate_description, generate_meta_with_openai
 
 client = TestClient(app)
 
