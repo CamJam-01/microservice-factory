@@ -1,0 +1,44 @@
+# This OpenAPI specification provides a description of the SEO Meta Description
+# Generator API.  It may be served automatically by FastAPI, but is included
+# here for completeness and external tooling.
+openapi: 3.0.2
+info:
+  title: SEO Meta Description Generator
+  version: 1.0.0
+  description: |
+    Generate an SEO meta description under 160 characters for a page given a title and description.
+paths:
+  /generate:
+    post:
+      summary: Generate a meta description
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: The title of the page
+                description:
+                  type: string
+                  description: A short description of the page
+              required:
+                - title
+                - description
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta_description:
+                    type: string
+                    description: The generated meta description
+        '400':
+          description: Bad request
+        '422':
+          description: Validation error
